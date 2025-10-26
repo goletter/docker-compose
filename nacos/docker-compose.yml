@@ -1,0 +1,27 @@
+services:
+  nacos:
+    image: nacos/nacos-server:v2.5.1
+    container_name: nacos
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - "8848:8848"   # Nacos 控制台 & 服务注册发现端口
+    environment:
+      - MODE=standalone                # 单机模式
+      - NACOS_AUTH_ENABLE=true         # ✅ 开启鉴权
+      - NACOS_AUTH_IDENTITY_KEY=serverIdentity
+      - NACOS_AUTH_IDENTITY_VALUE=security
+      - NACOS_AUTH_TOKEN=ThisIsAReallyStrongSecretKeyForNacosJWT123456  # Token 密钥（可自定义）
+      - JVM_XMS=512m
+      - JVM_XMX=512m
+      - JVM_XMN=256m
+    networks:
+      - app_net
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8848/nacos" ]
+      interval: 5s
+      retries: 5
+
+networks:
+  app_net:
+    external: true

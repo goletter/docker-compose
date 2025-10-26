@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s  # 默认抓取间隔
+
+scrape_configs:
+  - job_name: 'prometheus'  # Prometheus 自身的监控
+    static_configs:
+      - targets: ['localhost:9090']  # Prometheus 服务的抓取目标
+
+  - job_name: 'hyperf_app'  # Hyperf 应用的监控
+    static_configs:
+      - targets: ['localhost:9501']  # 替换为你的 Hyperf 服务地址

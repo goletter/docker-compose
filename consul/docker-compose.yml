@@ -1,0 +1,25 @@
+services:
+  consul:
+    image: bitnami/consul:1.21.4-debian-12-r1
+    container_name: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+      - CONSUL_CLIENT_INTERFACE=eth0
+      - BITNAMI_DEBUG=true  # 可选，输出调试日志
+    ports:
+      - "8500:8500"   # Web UI & HTTP API
+      - "8600:8600/udp"  # DNS
+      - "8300:8300"
+      - "8301:8301"
+      - "8302:8302"
+    volumes:
+      - consul_data:/bitnami/consul
+    networks:
+      - consul_net
+
+volumes:
+  consul_data:
+
+networks:
+  consul_net:
+    driver: bridge
