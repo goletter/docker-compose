@@ -1,0 +1,29 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: thinkphp_app_1
+    volumes:
+      - .:/var/www
+    networks:
+      - thinkphp_network
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: thinkphp_nginx_1
+    volumes:
+      - .:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8082:80"
+    depends_on:
+      - app
+    networks:
+      - thinkphp_network
+    restart: always
+
+networks:
+  thinkphp_network:
+    driver: bridge

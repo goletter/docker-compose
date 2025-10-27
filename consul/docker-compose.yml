@@ -13,12 +13,12 @@ services:
       - "8301:8301"
       - "8302:8302"
     volumes:
-      - consul_data:/bitnami/consul
+      - data:/bitnami/consul
     networks:
       - consul_net
 
 volumes:
-  consul_data:
+  data:
 
 networks:
   consul_net:

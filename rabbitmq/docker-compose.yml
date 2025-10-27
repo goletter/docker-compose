@@ -9,7 +9,7 @@ services:
       - RABBITMQ_DEFAULT_USER=guest  # Default username
       - RABBITMQ_DEFAULT_PASS=guest  # Default password
     volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+      - data:/var/lib/rabbitmq
     restart: always
 
 volumes:
