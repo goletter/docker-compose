@@ -1,0 +1,12 @@
+services:
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    container_name: mqtt
+    restart: always
+    ports:
+      - "1883:1883"   # MQTT 默认端口
+      - "9001:9001"   # WebSocket 可选端口
+    volumes:
+      - ./data/config:/mosquitto/config
+      - ./dada/mqtt:/mosquitto/data
+      - ./dada/log:/mosquitto/log
