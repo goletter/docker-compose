@@ -13,5 +13,5 @@ services:
     restart: always
 
 volumes:
-  rabbitmq_data:
+  data:
     driver: local
