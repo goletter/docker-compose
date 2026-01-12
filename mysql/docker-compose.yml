@@ -6,7 +6,7 @@ services:
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: wewallads_test
       MYSQL_USER: test
       MYSQL_PASSWORD: 123456
     command:
