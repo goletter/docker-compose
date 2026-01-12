@@ -4,14 +4,19 @@ services:
     container_name: gitlab
     restart: always
     hostname: code.wewallads.com
+
     ports:
-      - "8888:80"
-      - "2222:22"
+      - "80:80"     # Web
+      - "2222:22"   # SSH clone
+
     volumes:
       - ./data/config:/etc/gitlab
       - ./data/logs:/var/log/gitlab
       - ./data/data:/var/opt/gitlab
+
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://code.wewallads.com:8888'
+        external_url 'http://code.wewallads.com'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+    shm_size: "256m"
