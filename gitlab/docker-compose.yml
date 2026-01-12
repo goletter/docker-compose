@@ -3,7 +3,7 @@ services:
     image: gitlab/gitlab-ce:16.8.1-ce.0
     container_name: gitlab
     restart: always
-    hostname: code.wewallads.com
+    # hostname: code.wewallads.com
 
     ports:
       - "8088:80"     # Web
