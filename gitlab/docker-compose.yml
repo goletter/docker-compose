@@ -1,12 +1,11 @@
 services:
   gitlab:
-    image: gitlab/gitlab-ce:latest
+    image: gitlab/gitlab-ce:16.8.1-ce.0
     container_name: gitlab
     restart: always
-    hostname: gitlab.example.com
+    hostname: code.wewallads.com
     ports:
-      - "8080:80"
-      - "443:443"
+      - "8888:80"
       - "2222:22"
     volumes:
       - ./data/config:/etc/gitlab
@@ -14,5 +13,5 @@ services:
       - ./data/data:/var/opt/gitlab
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.example.com'
+        external_url 'http://code.wewallads.com:8888'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
