@@ -16,12 +16,12 @@ services:
       - JVM_XMX=512m
       - JVM_XMN=256m
     networks:
-      - app_net
+      - app_network
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8848/nacos" ]
       interval: 5s
       retries: 5
 
 networks:
-  app_net:
+  app_network:
     external: true
