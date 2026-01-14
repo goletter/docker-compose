@@ -12,6 +12,6 @@ services:
     command:
       --default-time-zone=+08:00
     ports:
-      - "33061:3306"
+      - "33189:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
