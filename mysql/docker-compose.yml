@@ -17,7 +17,3 @@ services:
       - "33189:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
-
-networks:
-  default:
-    name: wewallads-card
