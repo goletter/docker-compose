@@ -5,6 +5,7 @@ services:
     restart: always
     environment:
       TZ: Asia/Shanghai
+      MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: wewallads_test
       MYSQL_USER: test
