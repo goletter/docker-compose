@@ -15,6 +15,12 @@ services:
       - JVM_XMS=512m
       - JVM_XMX=512m
       - JVM_XMN=256m
+      # 添加健康检查等待
+    healthcheck:
+        test: [ "CMD", "nc", "-zv", "nacos", "8848" ]
+        interval: 10s
+        timeout: 5s
+        retries: 6
     networks:
       - app_network
     restart: always
