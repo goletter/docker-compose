@@ -17,10 +17,6 @@ services:
       - JVM_XMN=256m
     networks:
       - app_network
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://47.86.53.164:8848/nacos" ]
-      interval: 5s
-      retries: 5
 
 networks:
   app_network:
