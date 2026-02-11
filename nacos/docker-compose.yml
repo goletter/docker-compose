@@ -17,7 +17,8 @@ services:
       - JVM_XMN=256m
     networks:
       - app_network
+    restart: always
 
 networks:
   app_network:
-    external: true
+    driver: bridge
