@@ -14,7 +14,6 @@ services:
       - /etc/hosts:/etc/hosts:ro  # 共享宿主机hosts
     environment:
       - TZ=Asia/Shanghai
-      - JENKINS_OPTS="--prefix=/jenkins"  # 可选，添加路径前缀
     networks:
       - app_network
     restart: always
