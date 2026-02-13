@@ -33,4 +33,4 @@ networks:
   app_network:
     driver: bridge
     driver_opts:
-      com.docker.network.driver.mtu: 1500  # 设置MTU优化传输
+      com.docker.network.driver.mtu: 1500  # 设置MTU优化传输  ssh-keygen -t ed25519 -C "jenkins"
