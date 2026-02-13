@@ -2,13 +2,36 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    restart: always
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     user: root
     ports:
       - "8089:8080"
       - "50000:50000"
     volumes:
       - ./data/jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./ssh_config:/var/jenkins_home/.ssh/config:ro
+      - /etc/hosts:/etc/hosts:ro  # 共享宿主机hosts
     environment:
       - TZ=Asia/Shanghai
+      - JENKINS_OPTS="--prefix=/jenkins"  # 可选，添加路径前缀
+    networks:
+      - app_network
+    restart: always
+    # SSH优化配置
+    sysctls:
+      - net.core.somaxconn=1024
+      - net.ipv4.tcp_syncookies=1
+      - net.ipv4.tcp_tw_reuse=1
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+
+networks:
+  app_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1500  # 设置MTU优化传输

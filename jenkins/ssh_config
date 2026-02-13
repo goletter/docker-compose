@@ -1,0 +1,6 @@
+# SSH 优化配置 - 禁用 GSSAPI 加速连接
+Host *
+    GSSAPIAuthentication no
+    GSSAPIKeyExchange no
+    ConnectTimeout 10
+    ServerAliveInterval 60
