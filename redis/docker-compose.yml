@@ -4,7 +4,7 @@ services:
     container_name: redis
     restart: always
     ports:
-      - "6379:6379"
+      - "16379:6379"
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     volumes:
       - ./data/redis:/data
