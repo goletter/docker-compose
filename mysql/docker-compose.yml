@@ -6,13 +6,15 @@ services:
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: "123456" # 建议加上双引号，防止 YAML 解析错类型
       MYSQL_DATABASE: wewallads_test
       MYSQL_USER: test
-      MYSQL_PASSWORD: 123456
+      MYSQL_PASSWORD: "123456"
     command:
       --default-time-zone=+08:00
       --bind-address=0.0.0.0
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
     ports:
       - "33189:3306"
     volumes:
