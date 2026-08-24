@@ -1,0 +1,7 @@
+services:
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./data/letsencrypt:/etc/letsencrypt
+      - ./data/letsencrypt-lib:/var/lib/letsencrypt
+      - ./data/webroot:/var/www/certbot
