@@ -1,0 +1,9 @@
+services:
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cf-tunnel
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
