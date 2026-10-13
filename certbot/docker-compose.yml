@@ -5,3 +5,5 @@ services:
       - ./data/letsencrypt:/etc/letsencrypt
       - ./data/letsencrypt-lib:/var/lib/letsencrypt
       - ./data/webroot:/var/www/certbot
+      # optional: mount host nginx cert dir if you run renew/copy from compose
+      - ${NGINX_CERT_DIR:-/etc/nginx/cert}:/etc/nginx/cert
