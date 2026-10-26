@@ -1,7 +1,6 @@
 services:
   rabbitmq:
-    build: .
-    image: rabbitmq-delayed:4.2
+    image: rabbitmq:4.4.0-management
     container_name: rabbitmq
     ports:
       - "5672:5672"    # RabbitMQ default port
