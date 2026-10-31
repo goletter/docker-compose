@@ -10,10 +10,12 @@ services:
       - "50000:50000"
     volumes:
       - ./data/jenkins_home:/var/jenkins_home
-      - ./ssh_config:/var/jenkins_home/.ssh/config:ro
+      - ./init.groovy.d/init-admin.groovy:/usr/share/jenkins/ref/init.groovy.d/init-admin.groovy:ro
       - /etc/hosts:/etc/hosts:ro  # 共享宿主机hosts
     environment:
       - TZ=Asia/Shanghai
+      - JENKINS_ADMIN_ID=admin
+      - JENKINS_ADMIN_PASSWORD=123456
     networks:
       - app_network
     restart: always
