@@ -11,5 +11,6 @@
 .vscode/
 /phpstan.neon
 /phpunit.xml
+volumes/
 data/
 jenkins_home/
